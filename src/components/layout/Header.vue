@@ -4,6 +4,19 @@
     <ul class="navbar">
       <router-link tag="li" to="/" class="navbar-item">Home</router-link>
       <router-link tag="li" to="/categories" class="navbar-item">Categories</router-link>
+      <!-- <li>
+        <button class="navbar-item dropbtn">
+          Categories
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <form>
+          <select v-model="selectedValue">
+            <option v-for="(value, index) in categories" :value="value" :key="index">{{
+              value
+            }}</option>
+          </select>
+        </form>
+      </li> -->
       <router-link tag="li" to="/random" class="navbar-item">Random</router-link>
     </ul>
   </header>

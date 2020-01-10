@@ -1,11 +1,11 @@
 <template>
   <div class="item-details-page">
-    <div>{{$route.params.API}}</div>
+    <div>{{ $route.params.API }}</div>
     <ul class="items-container">
       <ApiItem
         class="card"
         :key="index"
-        :entry="entry"
+        :entry="randomEntry"
         @click="this.selectItem(entry)"
         :itemDetails="!itemDetails"
       />
@@ -17,7 +17,7 @@
           .filter(relatedEntry => relatedEntry.Category === entry.Category)
           .slice(0, 3)"
         :key="index"
-        :entry="entry"
+        :entry="relatedEntry"
         @click="this.selectItem(entry)"
         :itemDetails="itemDetails"
       />
@@ -27,20 +27,33 @@
 
 <script>
 // @ is an alias to /src
-import ApiItem from "@/components/ApiItem.vue";
+import ApiItem from '@/components/ApiItem.vue';
 
 export default {
-  name: "ItemDetails",
+  name: 'ItemDetails',
   components: {
-    ApiItem
+    ApiItem,
+  },
+  props: {
+    randomEntry: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
       entries: [],
       itemDetails: false,
-      selectedItem: {}
+      selectedItem: {},
     };
-  }
+  },
+  // async created() {
+  //   try {
+  //     const res = await fetch('');
+  //   } catch (err) {
+  //     err => console.log(err);
+  //   }
+  // },
 };
 </script>
 

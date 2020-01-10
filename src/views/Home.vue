@@ -4,6 +4,7 @@
       <PulseLoader :color="`#575f66`" />
     </template>
     <template v-else>
+      <!-- <div>{{ $route.push({ path: `ItemDetails/${randomEntry.API}` }) }}</div> -->
       <h2 class="home-title">API's</h2>
       <ul class="items-container">
         <ApiItem
@@ -11,7 +12,7 @@
           v-for="(randomEntry, index) in randomEntries"
           :key="index"
           :entry="randomEntry"
-          @click="selectItem(entry)"
+          @click="$route.push({ path: `ItemDetails/${randomEntry.API}` })"
           :itemDetails="itemDetails"
         />
       </ul>
