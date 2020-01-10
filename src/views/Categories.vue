@@ -7,11 +7,7 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in categories" :value="value" :key="index">
-            {{
-            value
-            }}
-          </option>
+          <option v-for="(value, index) in categories" :value="value" :key="index">{{ value }}</option>
         </select>
       </form>
       <ul class="items-container">
@@ -58,7 +54,8 @@ export default {
 
         this.loading = false;
       } catch (err) {
-        console.error(err.message);
+        // console.error(err.message);
+        throw err;
       }
     },
     async fetchEntries() {
@@ -71,7 +68,8 @@ export default {
 
         this.loading = false;
       } catch (err) {
-        console.error(err.message);
+        // console.error(err.message);
+        throw err;
       }
     },
     onChange(value) {
