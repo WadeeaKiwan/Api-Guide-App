@@ -4,29 +4,16 @@
     <ul class="navbar">
       <router-link tag="li" to="/" class="navbar-item">Home</router-link>
       <router-link tag="li" to="/categories" class="navbar-item">Categories</router-link>
-      <!-- <li>
-        <button class="navbar-item dropbtn">
-          Categories
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <form>
-          <select v-model="selectedValue">
-            <option v-for="(value, index) in categories" :value="value" :key="index">{{
-              value
-            }}</option>
-          </select>
-        </form>
-      </li> -->
       <router-link tag="li" to="/random" class="navbar-item">Random</router-link>
     </ul>
   </header>
 </template>
 
-<script>
-import Vue from 'vue';
+<script lang="ts">
+import Vue from "vue";
 
 export default {
-  name: 'Header',
+  name: "Header"
 };
 </script>
 
@@ -38,7 +25,6 @@ export default {
 }
 
 h1 {
-  /* background-color: #575f66; */
   min-width: 100%;
   margin: 0;
   padding: 0;
@@ -82,7 +68,6 @@ ul {
 
 li.router-link-exact-active {
   color: #42b983;
-  /* background-color: rgb(17, 13, 13); */
   background-color: #575f66;
 }
 

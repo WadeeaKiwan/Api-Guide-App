@@ -37,15 +37,15 @@
   </li>
 </template>
 
-<script>
-import Vue from 'vue';
+<script lang="ts">
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'ApiItem',
+  name: "ApiItem",
   props: {
     entry: Object,
-    itemDetails: Boolean,
-  },
+    itemDetails: Boolean
+  }
   // methods: {
   //   onClick() {
   //     eventBus.$emit("item-selected");

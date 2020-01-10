@@ -27,26 +27,26 @@
 
 <script>
 // @ is an alias to /src
-import ApiItem from '@/components/ApiItem.vue';
+import ApiItem from "@/components/ApiItem.vue";
 
 export default {
-  name: 'ItemDetails',
+  name: "ItemDetails",
   components: {
-    ApiItem,
+    ApiItem
   },
   props: {
     randomEntry: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       entries: [],
       itemDetails: false,
-      selectedItem: {},
+      selectedItem: {}
     };
-  },
+  }
   // async created() {
   //   try {
   //     const res = await fetch('');

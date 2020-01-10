@@ -1,13 +1,17 @@
 <template>
   <div class="categories">
-    <template v-if="loading"><PulseLoader :color="`#575f66`"/></template>
+    <template v-if="loading">
+      <PulseLoader :color="`#575f66`" />
+    </template>
     <template v-else>
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in categories" :value="value" :key="index">{{
+          <option v-for="(value, index) in categories" :value="value" :key="index">
+            {{
             value
-          }}</option>
+            }}
+          </option>
         </select>
       </form>
       <ul class="items-container">
@@ -24,14 +28,14 @@
 </template>
 
 <script>
-import ApiItem from '../components/ApiItem.vue';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ApiItem from "../components/ApiItem.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
-  name: 'categories',
+  name: "categories",
   components: {
     ApiItem,
-    PulseLoader,
+    PulseLoader
   },
   data() {
     return {
@@ -39,48 +43,47 @@ export default {
       categories: [],
       entries: [],
       selectedCategory: [],
-      selectedValue: 'Select a Category',
-      itemDetails: true,
+      selectedValue: "Select a Category",
+      itemDetails: true
     };
   },
   methods: {
     async fetchCategories() {
       try {
-        const res = await fetch('https://api.publicapis.org/categories');
+        const res = await fetch("https://api.publicapis.org/categories");
 
         const categories = await res.json();
 
         this.categories = categories;
-        console.log(categories);
 
         this.loading = false;
       } catch (err) {
-        err => console.log(err.message);
+        console.error(err.message);
       }
     },
     async fetchEntries() {
       try {
-        const res = await fetch('https://api.publicapis.org/entries');
+        const res = await fetch("https://api.publicapis.org/entries");
 
         const json = await res.json();
-        console.log(json.entries);
 
         this.entries = await json.entries;
 
         this.loading = false;
       } catch (err) {
-        err => console.log(err.message);
+        console.error(err.message);
       }
     },
     onChange(value) {
-      this.selectedCategory = this.entries.filter(entry => entry.Category === value);
-      console.log(this.selectedCategory);
-    },
+      this.selectedCategory = this.entries.filter(
+        entry => entry.Category === value
+      );
+    }
   },
   created() {
     this.fetchCategories();
     this.fetchEntries();
-  },
+  }
 };
 </script>
 

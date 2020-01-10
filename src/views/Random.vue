@@ -1,6 +1,8 @@
 <template>
   <div class="random">
-    <template v-if="loading"><PulseLoader :color="`#575f66`"/></template>
+    <template v-if="loading">
+      <PulseLoader :color="`#575f66`" />
+    </template>
     <template v-else>
       <h2>This is a random API</h2>
       <ul>
@@ -15,20 +17,20 @@
 
 <script>
 // @ is an alias to /src
-import ApiItem from '@/components/ApiItem.vue';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ApiItem from "@/components/ApiItem.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
-  name: 'Random',
+  name: "Random",
   components: {
     ApiItem,
-    PulseLoader,
+    PulseLoader
   },
   data() {
     return {
       loading: true,
       randomItem: {},
-      itemDetails: true,
+      itemDetails: true
     };
   },
   created() {
@@ -37,22 +39,21 @@ export default {
   methods: {
     async fetchRandomItem() {
       try {
-        const res = await fetch('https://api.publicapis.org/random');
+        const res = await fetch("https://api.publicapis.org/random");
 
         const json = await res.json();
-        console.log(json.entries);
 
         this.randomItem = json.entries[0];
 
         this.loading = false;
-      } catch {
-        err => console.log(err.message);
+      } catch (err) {
+        console.error(err.message);
       }
     },
     randomClick() {
       this.fetchRandomItem();
-    },
-  },
+    }
+  }
 };
 </script>
 

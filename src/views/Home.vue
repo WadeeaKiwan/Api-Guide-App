@@ -22,14 +22,14 @@
 
 <script>
 // @ is an alias to /src
-import ApiItem from '@/components/ApiItem.vue';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ApiItem from "@/components/ApiItem.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     ApiItem,
-    PulseLoader,
+    PulseLoader
   },
   data() {
     return {
@@ -37,33 +37,31 @@ export default {
       entries: [],
       randomEntries: [],
       itemDetails: false,
-      selectedItem: {},
+      selectedItem: {}
     };
   },
   async created() {
     try {
-      const res = await fetch('https://api.publicapis.org/entries');
+      const res = await fetch("https://api.publicapis.org/entries");
 
       const json = await res.json();
-      console.log(json.entries);
 
       this.entries = await json.entries;
-      this.randomEntries = json.entries.sort(() => 0.5 - Math.random()).slice(0, 10);
-      console.log(this.randomEntries);
+      this.randomEntries = json.entries
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
 
       this.loading = false;
     } catch (err) {
-      err => console.log(err.message);
+      console.error(err.message);
     }
   },
   methods: {
     selectItem(item) {
       this.selectedItem = item;
       this.itemDetails = !this.itemDetails;
-      console.log(this.itemDetails);
-      console.log(this.selectedItem);
-    },
-  },
+    }
+  }
 };
 </script>
 
