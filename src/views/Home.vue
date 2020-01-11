@@ -85,9 +85,9 @@ export default {
   background-color: rgb(250, 240, 242, 1);
 }
 
-@media (max-width: 350px) {
+@media (max-width: 479.98px) {
   .home {
-    padding-top: 200px;
+    padding-top: 220px;
   }
 }
 

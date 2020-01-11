@@ -15,7 +15,8 @@ export default {
 
 <style scoped>
 .not-found {
-  padding-top: 150px;
+  padding-top: 300px;
+  min-height: 1200px;
 }
 
 h1 {

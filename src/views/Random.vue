@@ -65,7 +65,6 @@ export default {
 }
 
 h2 {
-  color: blue;
   padding-bottom: 2vw;
 }
 
@@ -91,6 +90,10 @@ h2 {
 }
 
 @media (max-width: 480px) {
+  .random {
+    padding-top: 220px;
+  }
+
   ul {
     margin: 0 5vw;
   }

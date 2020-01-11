@@ -88,6 +88,10 @@ export default {
 }
 
 @media (max-width: 478.98px) {
+  .item-details-page {
+    padding-top: 220px;
+  }
+
   .api-item {
     width: calc(100% - 30px);
   }
