@@ -7,7 +7,9 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in categories" :value="value" :key="index">{{ value }}</option>
+          <option v-for="(value, index) in categories" :value="value" :key="index">
+            {{ value }}
+          </option>
         </select>
       </form>
       <ul class="items-container">
@@ -54,7 +56,6 @@ export default {
 
         this.loading = false;
       } catch (err) {
-        // console.error(err.message);
         throw err;
       }
     },
@@ -68,14 +69,11 @@ export default {
 
         this.loading = false;
       } catch (err) {
-        // console.error(err.message);
         throw err;
       }
     },
     onChange(value) {
-      this.selectedCategory = this.entries.filter(
-        entry => entry.Category === value
-      );
+      this.selectedCategory = this.entries.filter(entry => entry.Category === value);
     }
   },
   created() {
@@ -89,6 +87,7 @@ export default {
 .categories {
   padding-top: 150px;
   padding-bottom: 50px;
+  min-height: 1200px;
 }
 
 h2 {

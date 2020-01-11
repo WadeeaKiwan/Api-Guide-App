@@ -4,7 +4,6 @@
       <PulseLoader :color="`#575f66`" />
     </template>
     <template v-else>
-      <!-- <div>{{ $route.push({ path: `ItemDetails/${randomEntry.API}` }) }}</div> -->
       <h2 class="home-title">API's</h2>
       <ul class="items-container">
         <ApiItem
@@ -36,8 +35,7 @@ export default {
       loading: true,
       entries: [],
       randomEntries: [],
-      itemDetails: false,
-      selectedItem: {}
+      itemDetails: false
     };
   },
   async created() {
@@ -47,20 +45,11 @@ export default {
       const json = await res.json();
 
       this.entries = await json.entries;
-      this.randomEntries = json.entries
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10);
+      this.randomEntries = json.entries.sort(() => 0.5 - Math.random()).slice(0, 10);
 
       this.loading = false;
     } catch (err) {
-      // console.error(err.message);
       throw err;
-    }
-  },
-  methods: {
-    selectItem(item) {
-      this.selectedItem = item;
-      this.itemDetails = !this.itemDetails;
     }
   }
 };
@@ -70,6 +59,7 @@ export default {
 .home {
   padding-top: 150px;
   padding-bottom: 50px;
+  min-height: 1200px;
 }
 
 .home-title {
@@ -86,6 +76,7 @@ export default {
   width: 100%;
   background-color: rgb(250, 240, 242, 0.5);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  padding: 2vw;
 }
 
 .api-item:hover {

@@ -1,6 +1,5 @@
 <template>
-  <!-- <li @click="onClick"> -->
-  <li>
+  <router-link tag="li" :to="{ path: `/item-details/${entry.API}` }">
     <template v-if="itemDetails">
       <h1>{{ entry.API }}</h1>
       <p>
@@ -34,7 +33,7 @@
         {{ entry.Category }}
       </p>
     </template>
-  </li>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -46,17 +45,12 @@ export default Vue.extend({
     entry: Object,
     itemDetails: Boolean
   }
-  // methods: {
-  //   onClick() {
-  //     eventBus.$emit("item-selected");
-  //   }
-  // }
 });
 </script>
 
 <style scoped>
 h1 {
-  font-family: cursive !important;
+  font-family: cursive, sans-serif;
   font-style: italic;
   font-weight: bold;
   color: darkmagenta;
@@ -89,7 +83,11 @@ a {
 }
 
 p {
-  padding-bottom: 15px;
+  padding: 1vh;
+}
+
+p:last-child {
+  margin-top: 2vw;
 }
 
 .btn {

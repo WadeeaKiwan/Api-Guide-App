@@ -6,7 +6,7 @@
     <template v-else>
       <h2>This is a random API</h2>
       <ul>
-        <ApiItem class="api-item" :entry="randomItem" :itemDetails="itemDetails" />
+        <ApiItem class="random-item" :entry="randomItem" :itemDetails="itemDetails" />
       </ul>
       <div>
         <button class="btn" @click="randomClick">Random API</button>
@@ -47,7 +47,6 @@ export default {
 
         this.loading = false;
       } catch (err) {
-        // console.error(err.message);
         throw err;
       }
     },
@@ -62,6 +61,7 @@ export default {
 .random {
   padding-top: 200px;
   padding-bottom: 50px;
+  min-height: 1200px;
 }
 
 h2 {
@@ -69,20 +69,19 @@ h2 {
   padding-bottom: 2vw;
 }
 
-.api-item {
-  min-width: 60%;
-  margin: 0 auto;
-}
-
-.api-item:hover {
-  cursor: default;
+.random-item {
+  max-width: 60%;
+  margin: 5vh auto;
+  background-color: rgb(250, 240, 242, 0.5);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  padding: 5vh;
 }
 
 .btn {
   margin: 20px 0;
   padding: 10px;
   color: white;
-  background-color: #575f66;
+  background-color: #4a5157;
   border: #575f66;
 }
 

@@ -71,7 +71,7 @@ li.router-link-exact-active {
   background-color: #575f66;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 425px) {
   .navbar {
     flex-direction: column;
   }
