@@ -11,7 +11,6 @@
           v-for="(randomEntry, index) in randomEntries"
           :key="index"
           :entry="randomEntry"
-          @click="$route.push({ path: `ItemDetails/${randomEntry.API}` })"
           :itemDetails="itemDetails"
         />
       </ul>
@@ -19,18 +18,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 // @ is an alias to /src
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-export default {
+interface HomeData {
+  loading: boolean;
+  entries: object[];
+  randomEntries: object[];
+  itemDetails: boolean;
+}
+
+export default Vue.extend({
   name: "Home",
   components: {
     ApiItem,
     PulseLoader
   },
-  data() {
+  data(): HomeData {
     return {
       loading: true,
       entries: [],
@@ -45,14 +52,16 @@ export default {
       const json = await res.json();
 
       this.entries = await json.entries;
-      this.randomEntries = json.entries.sort(() => 0.5 - Math.random()).slice(0, 10);
+      this.randomEntries = json.entries
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
 
       this.loading = false;
     } catch (err) {
       throw err;
     }
   }
-};
+});
 </script>
 
 <style>

@@ -15,18 +15,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 // @ is an alias to /src
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-export default {
+interface RandomData {
+  loading: boolean;
+  randomItem: object;
+  itemDetails: boolean;
+}
+
+export default Vue.extend({
   name: "Random",
   components: {
     ApiItem,
     PulseLoader
   },
-  data() {
+  data(): RandomData {
     return {
       loading: true,
       randomItem: {},
@@ -54,7 +61,7 @@ export default {
       this.fetchRandomItem();
     }
   }
-};
+});
 </script>
 
 <style scoped>

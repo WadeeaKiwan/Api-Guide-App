@@ -1,6 +1,8 @@
 <template>
   <div class="item-details-page">
-    <template v-if="loading"><PulseLoader :color="`#575f66`"/></template>
+    <template v-if="loading">
+      <PulseLoader :color="`#575f66`" />
+    </template>
     <template v-else>
       <ul class="items-container">
         <ApiItem class="selected-item" :entry="selectedEntry[0]" :itemDetails="itemDetails" />
@@ -21,18 +23,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 // @ is an alias to /src
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-export default {
+interface ItemDetailsData {
+  loading: boolean;
+  entries: { API: string; Category: string }[];
+  selectedEntry: { API: string; Category: string }[];
+  relatedEntries: object[];
+  itemDetails: boolean;
+}
+
+export default Vue.extend({
   name: "ItemDetails",
   components: {
     ApiItem,
     PulseLoader
   },
-  data() {
+  data(): ItemDetailsData {
     return {
       loading: true,
       entries: [],
@@ -50,7 +61,9 @@ export default {
 
       this.entries = await json.entries;
 
-      this.selectedEntry = await this.entries.filter(entry => entry.API === this.$route.params.API);
+      this.selectedEntry = await this.entries.filter(
+        entry => entry.API === this.$route.params.API
+      );
 
       this.relatedEntries = await this.entries
         .filter(
@@ -65,7 +78,7 @@ export default {
       throw err;
     }
   }
-};
+});
 </script>
 
 <style scoped>

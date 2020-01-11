@@ -4,12 +4,12 @@
   </footer>
 </template>
 
-<script>
-import Vue from 'vue';
+<script lang="ts">
+import Vue from "vue";
 
-export default {
-  name: 'Footer',
-};
+export default Vue.extend({
+  name: "Footer"
+});
 </script>
 
 <style>

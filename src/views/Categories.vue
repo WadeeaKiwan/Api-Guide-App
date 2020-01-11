@@ -7,9 +7,7 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in categories" :value="value" :key="index">
-            {{ value }}
-          </option>
+          <option v-for="(value, index) in categories" :value="value" :key="index">{{ value }}</option>
         </select>
       </form>
       <ul class="items-container">
@@ -25,17 +23,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import ApiItem from "../components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-export default {
-  name: "categories",
+interface CategoriesData {
+  loading: boolean;
+  categories: string[];
+  entries: { Category: string }[];
+  selectedCategory: object[];
+  selectedValue: string;
+  itemDetails: boolean;
+}
+
+export default Vue.extend({
+  name: "Categories",
   components: {
     ApiItem,
     PulseLoader
   },
-  data() {
+  data(): CategoriesData {
     return {
       loading: true,
       categories: [],
@@ -72,15 +80,17 @@ export default {
         throw err;
       }
     },
-    onChange(value) {
-      this.selectedCategory = this.entries.filter(entry => entry.Category === value);
+    onChange(value: string) {
+      this.selectedCategory = this.entries.filter(
+        entry => (entry.Category as string) === value
+      );
     }
   },
   created() {
     this.fetchCategories();
     this.fetchEntries();
   }
-};
+});
 </script>
 
 <style scoped>
