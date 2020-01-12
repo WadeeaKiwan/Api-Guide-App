@@ -46,7 +46,6 @@ export default Vue.extend({
       itemDetails: true
     };
   },
-  watch: {},
   async created() {
     try {
       const res = await fetch("https://api.publicapis.org/entries");

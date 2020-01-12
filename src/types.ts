@@ -36,3 +36,7 @@ export interface Entries {
   Link?: string;
   Category?: string;
 }
+
+export interface FooterData {
+  siteMapList: { name: string; path: string }[];
+}
