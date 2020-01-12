@@ -21,11 +21,7 @@ import Vue from "vue";
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-interface RandomData {
-  loading: boolean;
-  randomItem: object;
-  itemDetails: boolean;
-}
+import { RandomData } from "../types";
 
 export default Vue.extend({
   name: "Random",
@@ -40,8 +36,8 @@ export default Vue.extend({
       itemDetails: true
     };
   },
-  created() {
-    this.fetchRandomItem();
+  async created() {
+    await this.fetchRandomItem();
   },
   methods: {
     async fetchRandomItem() {
@@ -57,7 +53,7 @@ export default Vue.extend({
         throw err;
       }
     },
-    randomClick() {
+    randomClick(): void {
       this.fetchRandomItem();
     }
   }

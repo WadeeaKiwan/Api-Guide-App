@@ -28,14 +28,7 @@ import Vue from "vue";
 import ApiItem from "../components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-interface CategoriesData {
-  loading: boolean;
-  categories: string[];
-  entries: { Category: string }[];
-  selectedCategory: object[];
-  selectedValue: string;
-  itemDetails: boolean;
-}
+import { CategoriesData } from "../types";
 
 export default Vue.extend({
   name: "Categories",

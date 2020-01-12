@@ -29,13 +29,7 @@ import Vue from "vue";
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-interface ItemDetailsData {
-  loading: boolean;
-  entries: { API: string; Category: string }[];
-  selectedEntry: { API: string; Category: string }[];
-  relatedEntries: object[];
-  itemDetails: boolean;
-}
+import { ItemDetailsData } from "../types";
 
 export default Vue.extend({
   name: "ItemDetails",

@@ -24,12 +24,7 @@ import Vue from "vue";
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-interface HomeData {
-  loading: boolean;
-  entries: object[];
-  randomEntries: object[];
-  itemDetails: boolean;
-}
+import { HomeData } from "../types";
 
 export default Vue.extend({
   name: "Home",
