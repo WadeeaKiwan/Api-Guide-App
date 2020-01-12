@@ -6,7 +6,11 @@
     <template v-else>
       <h2>This is a random API</h2>
       <ul>
-        <ApiItem class="random-item" :entry="randomItem" :itemDetails="itemDetails" />
+        <ApiItemDetails
+          class="random-item"
+          :entry="randomItem"
+          :itemDetails="itemDetails"
+        />
       </ul>
       <div>
         <button class="btn" @click="randomClick">Random API</button>
@@ -18,7 +22,7 @@
 <script lang="ts">
 import Vue from "vue";
 // @ is an alias to /src
-import ApiItem from "@/components/ApiItem.vue";
+import ApiItemDetails from "@/components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 import { RandomData } from "../types";
@@ -26,7 +30,7 @@ import { RandomData } from "../types";
 export default Vue.extend({
   name: "Random",
   components: {
-    ApiItem,
+    ApiItemDetails,
     PulseLoader
   },
   data(): RandomData {
@@ -36,26 +40,29 @@ export default Vue.extend({
       itemDetails: true
     };
   },
-  async created() {
-    await this.fetchRandomItem();
-  },
   methods: {
+    // Create a function to fetch `a random entry` and assign it to `randomItem` variable
     async fetchRandomItem() {
       try {
         const res = await fetch("https://api.publicapis.org/random");
 
         const json = await res.json();
 
-        this.randomItem = json.entries[0];
+        this.randomItem = await json.entries[0];
 
         this.loading = false;
       } catch (err) {
         throw err;
       }
     },
+    // Call the fetch function on click event
     randomClick(): void {
       this.fetchRandomItem();
     }
+  },
+  created() {
+    // Call the fetch function for a random entry
+    this.fetchRandomItem();
   }
 });
 </script>
@@ -69,6 +76,7 @@ export default Vue.extend({
 
 h2 {
   padding-bottom: 2vw;
+  font-size: 1.6em;
 }
 
 .random-item {

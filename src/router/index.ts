@@ -23,6 +23,7 @@ const routes = [
   {
     path: "/item-details/:API",
     name: "ItemDetails",
+    props: true,
     component: () => import("../views/ItemDetails.vue")
   },
   {

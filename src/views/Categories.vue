@@ -7,11 +7,16 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in categories" :value="value" :key="index">{{ value }}</option>
+          <option
+            v-for="(value, index) in categories"
+            :value="value"
+            :key="index"
+            >{{ value }}</option
+          >
         </select>
       </form>
       <ul class="items-container">
-        <ApiItem
+        <ApiItemDetails
           class="api-item"
           v-for="(entry, index) in selectedCategory"
           :key="index"
@@ -25,7 +30,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import ApiItem from "../components/ApiItem.vue";
+import ApiItemDetails from "../components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 import { CategoriesData } from "../types";
@@ -33,7 +38,7 @@ import { CategoriesData } from "../types";
 export default Vue.extend({
   name: "Categories",
   components: {
-    ApiItem,
+    ApiItemDetails,
     PulseLoader
   },
   data(): CategoriesData {
@@ -47,6 +52,7 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Create function to fetch the `Categories` array and assign it to the `categories` variable
     async fetchCategories() {
       try {
         const res = await fetch("https://api.publicapis.org/categories");
@@ -60,6 +66,7 @@ export default Vue.extend({
         throw err;
       }
     },
+    // Create function to fetch `the whole data` array and assign it to the `entries` variable
     async fetchEntries() {
       try {
         const res = await fetch("https://api.publicapis.org/entries");
@@ -73,15 +80,17 @@ export default Vue.extend({
         throw err;
       }
     },
+    // A method to change the value of the select menu according to the selected option
     onChange(value: string) {
       this.selectedCategory = this.entries.filter(
         entry => (entry.Category as string) === value
       );
     }
   },
-  created() {
-    this.fetchCategories();
-    this.fetchEntries();
+  async created() {
+    // Call the fetch functions
+    await this.fetchCategories();
+    await this.fetchEntries();
   }
 });
 </script>
@@ -91,11 +100,6 @@ export default Vue.extend({
   padding-top: 150px;
   padding-bottom: 50px;
   min-height: 1200px;
-}
-
-h2 {
-  color: blue;
-  padding-bottom: 2vw;
 }
 
 select {

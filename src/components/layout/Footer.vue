@@ -1,8 +1,14 @@
 <template>
   <footer class="footer">
     <ul class="site-map">
-      <li class="site-map-item" v-for="(siteMapItem, index) in siteMapList" :key="index">
-        <a class="site-map-link" :href="siteMapItem.path">{{ siteMapItem.name }}</a>
+      <li
+        class="site-map-item"
+        v-for="(siteMapItem, index) in siteMapList"
+        :key="index"
+      >
+        <a class="site-map-link" :href="siteMapItem.path">{{
+          siteMapItem.name
+        }}</a>
       </li>
     </ul>
     <p>Copyright &copy; Wadeea Kiwan 2020</p>
@@ -22,6 +28,7 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Custom function to List an arry of routes names and paths
     getRoutesList(
       routes: { path: string; name: string }[],
       pre: string
@@ -47,12 +54,12 @@ export default Vue.extend({
       );
     }
   },
-  async created() {
-    this.siteMapList = await this.getRoutesList(
+  created() {
+    // Call the custion function `getRoutesList` and assign its retured array to the `siteMapList` variable
+    this.siteMapList = this.getRoutesList(
       this.$router.options.routes,
       "http://localhost:8080"
     );
-    console.log(this.$router);
   }
 });
 </script>

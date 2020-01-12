@@ -3,8 +3,12 @@
     <h1 class="header-title">API GUIDE</h1>
     <ul class="navbar">
       <router-link tag="li" to="/" class="navbar-item">Home</router-link>
-      <router-link tag="li" to="/categories" class="navbar-item">Categories</router-link>
-      <router-link tag="li" to="/random" class="navbar-item">Random</router-link>
+      <router-link tag="li" to="/categories" class="navbar-item"
+        >Categories</router-link
+      >
+      <router-link tag="li" to="/random" class="navbar-item"
+        >Random</router-link
+      >
     </ul>
   </header>
 </template>

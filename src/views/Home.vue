@@ -4,7 +4,7 @@
       <PulseLoader :color="`#575f66`" />
     </template>
     <template v-else>
-      <h2 class="home-title">API's</h2>
+      <h2 class="home-title">Sample API's</h2>
       <ul class="items-container">
         <ApiItem
           class="api-item"
@@ -42,12 +42,15 @@ export default Vue.extend({
   },
   async created() {
     try {
+      // Fetch the data from the Api
       const res = await fetch("https://api.publicapis.org/entries");
-
       const json = await res.json();
 
-      this.entries = await json.entries;
-      this.randomEntries = json.entries
+      // Assign the data to the `entries` variable
+      this.entries = await [...json.entries];
+
+      // Change the order of the entries randomly
+      this.randomEntries = await this.entries
         .sort(() => 0.5 - Math.random())
         .slice(0, 10);
 
@@ -67,8 +70,8 @@ export default Vue.extend({
 }
 
 .home-title {
-  color: navy;
   padding: 2vw;
+  font-size: 1.6em;
 }
 
 .items-container {
