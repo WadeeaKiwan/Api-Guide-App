@@ -58,7 +58,7 @@ export default Vue.extend({
     // Call the custion function `getRoutesList` and assign its retured array to the `siteMapList` variable
     this.siteMapList = this.getRoutesList(
       (this as any).$router.options.routes,
-      "http://localhost:8080"
+      "https://dtt-test.herokuapp.com"
     );
   }
 });
