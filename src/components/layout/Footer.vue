@@ -6,9 +6,9 @@
         v-for="(siteMapItem, index) in siteMapList"
         :key="index"
       >
-        <a class="site-map-link" :href="siteMapItem.path">
-          {{ siteMapItem.name }}
-        </a>
+        <a class="site-map-link" :href="siteMapItem.path">{{
+          siteMapItem.name
+        }}</a>
       </li>
     </ul>
     <p>Copyright &copy; Wadeea Kiwan 2020</p>
@@ -58,7 +58,7 @@ export default Vue.extend({
     // Call the custion function `getRoutesList` and assign its retured array to the `siteMapList` variable
     this.siteMapList = this.getRoutesList(
       (this as any).$router.options.routes,
-      process.env.BASE_URL || "http://localhost:8080"
+      "http://localhost:8080"
     );
   }
 });
