@@ -1,15 +1,21 @@
 <template>
   <header class="header">
-    <h1 class="header-title">API GUIDE</h1>
-    <ul class="navbar">
-      <router-link tag="li" to="/" class="navbar-item">Home</router-link>
-      <router-link tag="li" to="/categories" class="navbar-item"
-        >Categories</router-link
-      >
-      <router-link tag="li" to="/random" class="navbar-item"
-        >Random</router-link
-      >
-    </ul>
+    <div class="container-header">
+      <div class="header-title">
+        <h1>API GUIDE</h1>
+      </div>
+      <div class="main-nav">
+        <ul class="navbar">
+          <router-link tag="li" to="/" class="navbar-item">Home</router-link>
+          <router-link tag="li" to="/categories" class="navbar-item"
+            >Categories</router-link
+          >
+          <router-link tag="li" to="/random" class="navbar-item"
+            >Random</router-link
+          >
+        </ul>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -22,66 +28,69 @@ export default Vue.extend({
 </script>
 
 <style>
-.header {
+.container-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  line-height: 1.4;
   position: fixed;
   min-width: 100%;
   z-index: 1;
-}
-
-h1 {
-  min-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
+  color: beige;
+  background-color: #2c3e50;
 }
 
 .header-title {
-  cursor: none;
-  font-size: 2em;
-  color: yellow;
-  font-family: cursive, sans-serif;
-  text-shadow: 2px 2px 5px white;
-  background-color: #575f66;
-  padding: 1.5vw;
+  font-family: "Bradley Hand ITC", sans-serif;
+  font-style: italic;
+  text-shadow: 2px 2px 5px beige;
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 15px;
 }
 
 .navbar {
   display: flex;
-  justify-content: center;
-  padding: 0;
-  background-color: rgb(8, 7, 7);
+  color: #333;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 14px;
+  letter-spacing: 0.5vw;
 }
 
 .navbar-item {
-  padding: 10px;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: white;
+  color: beige;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  border: #575f66 solid 1px;
-  opacity: 0.7;
+  padding: 19px 10px;
 }
 
 .navbar-item:hover {
-  opacity: 1;
-  background-color: #575f66;
+  color: #2c3e50;
+  background-color: beige;
 }
 
 li.router-link-exact-active {
-  color: #42b983;
-  background-color: #575f66;
+  color: beige;
+  background-color: #687077;
 }
 
-@media (max-width: 479.98px) {
-  .navbar {
+@media (max-width: 576px) {
+  .container-header {
     flex-direction: column;
   }
 
-  .navbar-item {
+  .main-nav {
     width: 100%;
+  }
+
+  .navbar-item {
+    width: calc(100% / 3);
   }
 }
 </style>

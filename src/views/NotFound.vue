@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found">
+  <div class="not-found container">
     <h1>
       404 Page Not Found
       <span>!!!</span>
@@ -18,7 +18,6 @@ export default Vue.extend({
 <style scoped>
 .not-found {
   padding-top: 300px;
-  min-height: 1200px;
 }
 
 h1 {

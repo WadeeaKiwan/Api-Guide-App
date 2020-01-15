@@ -1,5 +1,5 @@
 <template>
-  <div class="random">
+  <div class="container">
     <template v-if="loading">
       <PulseLoader :color="`#575f66`" />
     </template>
@@ -68,12 +68,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.random {
-  padding-top: 200px;
-  padding-bottom: 50px;
-  min-height: 1200px;
-}
-
 h2 {
   padding-bottom: 2vw;
   font-size: 1.6em;
