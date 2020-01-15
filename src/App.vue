@@ -41,7 +41,7 @@ export default Vue.extend({
 }
 
 .container {
-  padding: 200px 50px 50px;
+  padding: 200px 10vw 50px;
   min-height: 90vh;
 }
 
