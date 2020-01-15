@@ -1,5 +1,5 @@
 <template>
-  <div class="item-details-page">
+  <div class="container">
     <template v-if="loading">
       <PulseLoader :color="`#575f66`" />
     </template>
@@ -85,11 +85,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.item-details-page {
-  padding-top: 200px;
-  min-height: 1200px;
-}
-
 .selected-item {
   width: 80%;
   margin: 3vw auto;
@@ -103,11 +98,7 @@ export default Vue.extend({
   margin-top: 10vh;
 }
 
-@media (max-width: 478.98px) {
-  .item-details-page {
-    padding-top: 220px;
-  }
-
+@media (max-width: 576px) {
   .api-item {
     width: calc(100% - 30px);
   }

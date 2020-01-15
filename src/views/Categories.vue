@@ -1,5 +1,5 @@
 <template>
-  <div class="categories">
+  <div class="container">
     <template v-if="loading">
       <PulseLoader :color="`#575f66`" />
     </template>
@@ -96,12 +96,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.categories {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  min-height: 1200px;
-}
-
 select {
   background-color: #575f66;
   color: white;
@@ -113,11 +107,5 @@ select {
 
 ul {
   list-style-type: none;
-}
-
-@media (max-width: 479.98px) {
-  .categories {
-    padding-top: 220px;
-  }
 }
 </style>

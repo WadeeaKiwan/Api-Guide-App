@@ -28,9 +28,10 @@ h3 {
   font-style: italic;
   font-weight: bold;
   color: darkmagenta;
-  margin-bottom: 3vh;
+  margin: 0 1vh 3vh;
   font-size: 1.5em;
   word-wrap: break-word;
+  max-width: 90%;
 }
 
 li {

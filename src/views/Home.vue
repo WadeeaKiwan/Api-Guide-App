@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container">
     <template v-if="loading">
       <PulseLoader :color="`#575f66`" />
     </template>
@@ -63,12 +63,6 @@ export default Vue.extend({
 </script>
 
 <style>
-.home {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  min-height: 1200px;
-}
-
 .home-title {
   padding: 2vw;
   font-size: 1.6em;
@@ -92,13 +86,7 @@ export default Vue.extend({
   background-color: rgb(250, 240, 242, 1);
 }
 
-@media (max-width: 479.98px) {
-  .home {
-    padding-top: 220px;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   .api-item {
     width: calc(100% / 2 - 30px);
   }

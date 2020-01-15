@@ -39,4 +39,13 @@ export default Vue.extend({
   background-size: cover;
   background-attachment: fixed;
 }
+
+.container {
+  padding: 200px 50px 50px;
+  min-height: 90vh;
+}
+
+ul {
+  list-style-type: none;
+}
 </style>
