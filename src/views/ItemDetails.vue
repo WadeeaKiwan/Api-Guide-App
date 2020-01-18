@@ -6,7 +6,11 @@
     <template v-else>
       <button @click="$router.push('/')">Back to Homepage</button>
       <ul class="items-container">
-        <ApiItemDetails class="selected-item" :entry="selectedEntry[0]" :itemDetails="itemDetails" />
+        <ApiItemDetails
+          class="selected-item"
+          :entry="selectedEntry[0]"
+          :itemDetails="itemDetails"
+        />
       </ul>
       <div class="related-items">
         <h2>See also related API's</h2>

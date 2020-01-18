@@ -7,7 +7,12 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option v-for="(value, index) in allCategories" :value="value" :key="index">{{ value }}</option>
+          <option
+            v-for="(value, index) in allCategories"
+            :value="value"
+            :key="index"
+            >{{ value }}</option
+          >
         </select>
       </form>
       <ul class="items-container">
