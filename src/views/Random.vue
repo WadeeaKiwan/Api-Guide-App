@@ -8,7 +8,7 @@
       <ul>
         <ApiItemDetails
           class="random-item"
-          :entry="randomItem"
+          :entry="randomApi"
           :itemDetails="itemDetails"
         />
       </ul>
@@ -25,6 +25,8 @@ import Vue from "vue";
 import ApiItemDetails from "@/components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
+import { mapGetters, mapActions } from "vuex";
+
 import { RandomData } from "../types";
 
 export default Vue.extend({
@@ -36,33 +38,24 @@ export default Vue.extend({
   data(): RandomData {
     return {
       loading: true,
-      randomItem: {},
       itemDetails: true
     };
   },
   methods: {
-    // Create a function to fetch `a random entry` and assign it to `randomItem` variable
-    async fetchRandomItem() {
-      try {
-        const res = await fetch("https://api.publicapis.org/random");
-
-        const json = await res.json();
-
-        this.randomItem = await json.entries[0];
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
+    // Map state to the component
+    ...mapActions(["fetchRandomItem"]),
     // Call the fetch function on click event
     randomClick(): void {
       this.fetchRandomItem();
     }
   },
-  created() {
-    // Call the fetch function for a random entry
-    this.fetchRandomItem();
+  computed: {
+    ...mapGetters(["randomApi"])
+  },
+  async created() {
+    // Call the `fetchRandomItem` action for a random entry
+    await this.fetchRandomItem();
+    this.loading = false;
   }
 });
 </script>
