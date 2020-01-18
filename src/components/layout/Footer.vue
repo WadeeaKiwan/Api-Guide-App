@@ -19,48 +19,18 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { FooterData } from "../../types";
+import { mapGetters, mapActions } from "vuex";
 
 export default Vue.extend({
   name: "Footer",
-  data(): FooterData {
-    return {
-      siteMapList: []
-    };
-  },
   methods: {
-    // Custom function to List an arry of routes names and paths
-    getRoutesList(
-      routes: { path: string; name: string }[],
-      pre: string
-    ): { path: string; name: string }[] {
-      return routes.reduce(
-        (
-          array: { path: string; name: string }[],
-          route: { name: string; path: string; children?: any }
-        ) => {
-          const path = `${pre}${route.path}`;
-
-          if (route.path !== "*" && route.name !== "ItemDetails") {
-            array.push({ name: route.name, path });
-          }
-
-          if (route.children) {
-            array.push(...this.getRoutesList(route.children, `${path}/`));
-          }
-
-          return array;
-        },
-        []
-      );
-    }
+    ...mapActions(["fetchSitemapList"])
   },
-  created() {
-    // Call the custion function `getRoutesList` and assign its retured array to the `siteMapList` variable
-    this.siteMapList = this.getRoutesList(
-      (this as any).$router.options.routes,
-      "https://dtt-test.herokuapp.com"
-    );
+  computed: {
+    ...mapGetters(["siteMapList"])
+  },
+  async created() {
+    await this.fetchSitemapList();
   }
 });
 </script>

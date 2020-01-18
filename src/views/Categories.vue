@@ -7,12 +7,7 @@
       <form>
         <select @change="onChange(selectedValue)" v-model="selectedValue">
           <option selected disabled>Select a Category</option>
-          <option
-            v-for="(value, index) in categories"
-            :value="value"
-            :key="index"
-            >{{ value }}</option
-          >
+          <option v-for="(value, index) in allCategories" :value="value" :key="index">{{ value }}</option>
         </select>
       </form>
       <ul class="items-container">
@@ -33,7 +28,10 @@ import Vue from "vue";
 import ApiItemDetails from "../components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
+import { mapGetters, mapActions } from "vuex";
+
 import { CategoriesData } from "../types";
+import { Entry } from "../types";
 
 export default Vue.extend({
   name: "Categories",
@@ -44,53 +42,29 @@ export default Vue.extend({
   data(): CategoriesData {
     return {
       loading: true,
-      categories: [],
-      entries: [],
+      itemDetails: true,
       selectedCategory: [],
-      selectedValue: "Select a Category",
-      itemDetails: true
+      selectedValue: "Select a Category"
     };
   },
   methods: {
-    // Create function to fetch the `Categories` array and assign it to the `categories` variable
-    async fetchCategories() {
-      try {
-        const res = await fetch("https://api.publicapis.org/categories");
-
-        const categories = await res.json();
-
-        this.categories = categories;
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
-    // Create function to fetch `the whole data` array and assign it to the `entries` variable
-    async fetchEntries() {
-      try {
-        const res = await fetch("https://api.publicapis.org/entries");
-
-        const json = await res.json();
-
-        this.entries = await json.entries;
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
+    // Map action to the component
+    ...mapActions(["fetchCategories"]),
     // A method to change the value of the select menu according to the selected option
     onChange(value: string) {
-      this.selectedCategory = this.entries.filter(
-        entry => (entry.Category as string) === value
+      this.selectedCategory = this.allEntries.filter(
+        (entry: Entry) => (entry.Category as string) === value
       );
     }
   },
+  computed: {
+    // Map state to the component
+    ...mapGetters(["allEntries", "allCategories"])
+  },
   async created() {
-    // Call the fetch functions
+    // Call the fetch action
     await this.fetchCategories();
-    await this.fetchEntries();
+    this.loading = false;
   }
 });
 </script>

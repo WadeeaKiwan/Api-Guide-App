@@ -1,34 +1,4 @@
-export interface HomeData {
-  loading: boolean;
-  entries: Entries[];
-  randomEntries: Entries[];
-  itemDetails: boolean;
-}
-
-export interface ItemDetailsData {
-  loading: boolean;
-  entries: Entries[];
-  selectedEntry: Entries[];
-  relatedEntries: Entries[];
-  itemDetails: boolean;
-}
-
-export interface CategoriesData {
-  loading: boolean;
-  categories: string[];
-  entries: Entries[];
-  selectedCategory: Entries[];
-  selectedValue: string;
-  itemDetails: boolean;
-}
-
-export interface RandomData {
-  loading: boolean;
-  randomItem: Entries;
-  itemDetails: boolean;
-}
-
-export interface Entries {
+export interface Entry {
   API?: string;
   Description?: string;
   HTTPS?: boolean;
@@ -37,6 +7,24 @@ export interface Entries {
   Category?: string;
 }
 
-export interface FooterData {
-  siteMapList: { name: string; path: string }[];
+export interface HomeData {
+  loading: boolean;
+  itemDetails: boolean;
+}
+
+export interface ItemDetailsData {
+  loading: boolean;
+  itemDetails: boolean;
+}
+
+export interface CategoriesData {
+  loading: boolean;
+  itemDetails: boolean;
+  selectedCategory: Entry[];
+  selectedValue: string;
+}
+
+export interface RandomData {
+  loading: boolean;
+  itemDetails: boolean;
 }

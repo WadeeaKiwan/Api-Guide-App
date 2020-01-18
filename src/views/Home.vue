@@ -8,9 +8,9 @@
       <ul class="items-container">
         <ApiItem
           class="api-item"
-          v-for="(randomEntry, index) in randomEntries"
+          v-for="(entry, index) in allEntries"
           :key="index"
-          :entry="randomEntry"
+          :entry="entry"
           :itemDetails="itemDetails"
         />
       </ul>
@@ -24,6 +24,8 @@ import Vue from "vue";
 import ApiItem from "@/components/ApiItem.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
+import { mapGetters, mapActions } from "vuex";
+
 import { HomeData } from "../types";
 
 export default Vue.extend({
@@ -35,24 +37,19 @@ export default Vue.extend({
   data(): HomeData {
     return {
       loading: true,
-      entries: [],
-      randomEntries: [],
-      itemDetails: false
+      itemDetails: true
     };
+  },
+  methods: {
+    ...mapActions(["fetchEntries"])
+  },
+  computed: {
+    ...mapGetters(["allEntries", "randomEntries"])
   },
   async created() {
     try {
-      // Fetch the data from the Api
-      const res = await fetch("https://api.publicapis.org/entries");
-      const json = await res.json();
-
-      // Assign the data to the `entries` variable
-      this.entries = await [...json.entries];
-
-      // Change the order of the entries randomly
-      this.randomEntries = await this.entries
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10);
+      // Call the action `fetchEntries` that retrieve data from the Api
+      await this.fetchEntries();
 
       this.loading = false;
     } catch (err) {
