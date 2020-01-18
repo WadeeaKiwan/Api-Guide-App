@@ -24,10 +24,9 @@ export default {
         // Call the custom function `getRoutesList` and assign its returned array to the `siteMapList` variable
         const siteMapList = getRoutesList(
           (router as any).options.routes,
-          // "https://dtt-test.herokuapp.com"
-          "http://localhost:8080"
+          "https://dtt-test.herokuapp.com"
         );
-        console.log(siteMapList);
+
         // Assign the data to the `random` variable
         commit("SET_SITEMAP_LIST", siteMapList);
       } catch (err) {

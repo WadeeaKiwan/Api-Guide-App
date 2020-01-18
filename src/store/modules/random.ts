@@ -20,7 +20,6 @@ export default {
         const res = await fetch("https://api.publicapis.org/random");
         const json = await res.json();
         const random = await await json.entries[0];
-        console.log(random);
 
         // Assign the data to the `random` variable
         commit("SET_RANDOM", random);

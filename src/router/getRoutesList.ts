@@ -1,4 +1,4 @@
-// Custom function to List an arry of routes names and paths
+// Custom function to List an array of routes' names and paths
 function getRoutesList(
   routes: { path: string; name: string }[],
   pre: string
