@@ -21,7 +21,6 @@ export default {
         const res = await fetch("https://api.publicapis.org/entries");
         const json = await res.json();
         let entries = [...json.entries];
-        console.log(entries);
 
         // Assign the data to the `entries` variable
         commit("SET_ENTRIES", entries);
