@@ -169,13 +169,12 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-radius: 1rem;
   padding: 1rem;
 }
 
 .pagination-item button {
-  margin: 0 !important;
   padding: 0.25rem 0.4rem;
   font-size: 1.1em;
   border: none;
