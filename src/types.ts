@@ -10,6 +10,7 @@ export interface Entry {
 export interface HomeData {
   loading: boolean;
   itemDetails: boolean;
+  currentPage: number;
 }
 
 export interface ItemDetailsData {

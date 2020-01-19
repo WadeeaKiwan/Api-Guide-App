@@ -13,7 +13,7 @@ export default {
     allCategories: (state: CategoriesState) => state.categories
   },
   actions: {
-    async fetchCategories({ commit }: any) {
+    async getCategories({ commit }: any) {
       try {
         // Fetch the data from the Api
         const res = await fetch("https://api.publicapis.org/categories");

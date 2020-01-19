@@ -34,7 +34,7 @@ import Vue from "vue";
 import ApiItemDetails from "@/components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import { ItemDetailsData } from "../types";
 import { Entry } from "../types";
@@ -47,7 +47,7 @@ export default Vue.extend({
   },
   data(): ItemDetailsData {
     return {
-      loading: false,
+      loading: true,
       itemDetails: true
     };
   },
@@ -56,6 +56,9 @@ export default Vue.extend({
       type: String,
       required: true
     }
+  },
+  methods: {
+    ...mapActions(["getEntries"])
   },
   computed: {
     // Map the `entries` state to the component
@@ -74,6 +77,12 @@ export default Vue.extend({
         )
         .slice(0, 3);
     }
+  },
+  async created() {
+    // Call the `getEntries` action
+    await this.getEntries();
+
+    (this as any).loading = false;
   }
 });
 </script>

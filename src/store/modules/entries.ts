@@ -15,7 +15,7 @@ export default {
     allEntries: (state: EntriesState) => state.entries
   },
   actions: {
-    async fetchEntries({ commit }: any) {
+    async getEntries({ commit }: any) {
       try {
         // Fetch the data from the Api
         const res = await fetch("https://api.publicapis.org/entries");
