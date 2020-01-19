@@ -5,15 +5,15 @@
     </template>
     <template v-else>
       <h2 class="home-title">Sample API's</h2>
-      <ul class="items-container">
-        <ApiItem
-          class="api-item"
-          v-for="(entry, index) in allEntries"
-          :key="index"
-          :entry="entry"
-          :itemDetails="itemDetails"
-        />
-      </ul>
+      <ApiItemsPagination
+        :entries="allEntries"
+        :totalPages="Math.ceil(allEntries.length / 10)"
+        :total="allEntries.length"
+        :perPage="10"
+        :currentPage="currentPage"
+        @page-changed="onPageChange"
+        :itemDetails="itemDetails"
+      />
     </template>
   </div>
 </template>
@@ -21,7 +21,7 @@
 <script lang="ts">
 import Vue from "vue";
 // @ is an alias to /src
-import ApiItem from "@/components/ApiItem.vue";
+import ApiItemsPagination from "@/components/ApiItemsPagination.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 import { mapGetters, mapActions } from "vuex";
@@ -31,25 +31,29 @@ import { HomeData } from "../types";
 export default Vue.extend({
   name: "Home",
   components: {
-    ApiItem,
+    ApiItemsPagination,
     PulseLoader
   },
   data(): HomeData {
     return {
       loading: true,
-      itemDetails: true
+      itemDetails: true,
+      currentPage: 1
     };
   },
   methods: {
-    ...mapActions(["fetchEntries"])
+    ...mapActions(["getEntries"]),
+    onPageChange(page: number): void {
+      this.currentPage = page;
+    }
   },
   computed: {
-    ...mapGetters(["allEntries", "randomEntries"])
+    ...mapGetters(["allEntries"])
   },
   async created() {
     try {
-      // Call the action `fetchEntries` that retrieve data from the Api
-      await this.fetchEntries();
+      // Call the action `getEntries` that retrieve data from the Api
+      await this.getEntries();
 
       this.loading = false;
     } catch (err) {

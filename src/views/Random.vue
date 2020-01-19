@@ -43,18 +43,18 @@ export default Vue.extend({
   },
   methods: {
     // Map state to the component
-    ...mapActions(["fetchRandomItem"]),
+    ...mapActions(["getRandomItem"]),
     // Call the fetch function on click event
     randomClick(): void {
-      this.fetchRandomItem();
+      this.getRandomItem();
     }
   },
   computed: {
     ...mapGetters(["randomApi"])
   },
   async created() {
-    // Call the `fetchRandomItem` action for a random entry
-    await this.fetchRandomItem();
+    // Call the `getRandomItem` action for a random entry
+    await this.getRandomItem();
     this.loading = false;
   }
 });

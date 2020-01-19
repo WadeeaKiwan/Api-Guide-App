@@ -14,7 +14,7 @@ export default {
     randomApi: (state: RandomState) => state.randomItem
   },
   actions: {
-    async fetchRandomItem({ commit }: any) {
+    async getRandomItem({ commit }: any) {
       try {
         // Fetch the data from the Api
         const res = await fetch("https://api.publicapis.org/random");

@@ -54,7 +54,7 @@ export default Vue.extend({
   },
   methods: {
     // Map action to the component
-    ...mapActions(["fetchCategories"]),
+    ...mapActions(["getCategories", "getEntries"]),
     // A method to change the value of the select menu according to the selected option
     onChange(value: string) {
       this.selectedCategory = this.allEntries.filter(
@@ -68,7 +68,8 @@ export default Vue.extend({
   },
   async created() {
     // Call the fetch action
-    await this.fetchCategories();
+    await this.getCategories();
+    await this.getEntries();
     this.loading = false;
   }
 });
