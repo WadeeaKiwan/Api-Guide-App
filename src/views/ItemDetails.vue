@@ -135,7 +135,6 @@ export default Vue.extend({
   background-color: beige;
   color: #5c7756;
   font-weight: bold;
-  transition: all 0.4s;
 }
 
 @media (max-width: 576px) {

@@ -64,7 +64,7 @@ export default Vue.extend({
 .site-map {
   display: flex;
   justify-content: center;
-  padding: 3vh;
+  padding: 3vh 20vw;
 }
 
 .site-map-item {
@@ -81,7 +81,6 @@ export default Vue.extend({
 .site-map-link:hover {
   color: black;
   text-decoration: underline;
-  transition: ease-in 0.2s;
 }
 
 .footer p {
