@@ -4,6 +4,18 @@
       <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
+      <div class="btn-container">
+        <span>Sort by: </span>
+        <button class="btn" type="button" @click="orderDefault">
+          Default
+        </button>
+        <button class="btn" type="button" @click="sortAZ">
+          A to Z
+        </button>
+        <button class="btn" type="button" @click="sortZA">
+          Z to A
+        </button>
+      </div>
       <h2 class="home-title">API's</h2>
       <ApiItemsPagination
         :entries="allEntries"
@@ -27,6 +39,7 @@ import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import { mapGetters, mapActions } from "vuex";
 
 import { HomeData } from "../types";
+import { Entry } from "../types";
 
 export default Vue.extend({
   name: "Home",
@@ -45,6 +58,17 @@ export default Vue.extend({
     ...mapActions(["getEntries"]),
     onPageChange(page: number): void {
       this.currentPage = page;
+    },
+    orderDefault(): void {
+      this.getEntries();
+    },
+    sortAZ(): void {
+      this.allEntries.sort((a: any, b: any) => a.API.localeCompare(b.API));
+    },
+    sortZA(): void {
+      this.allEntries
+        .sort((a: any, b: any) => a.API.localeCompare(b.API))
+        .reverse();
     }
   },
   computed: {
@@ -67,6 +91,31 @@ export default Vue.extend({
 .home-title {
   padding: 2vw;
   font-size: 1.6em;
+}
+
+.btn-container {
+  text-align: left;
+}
+
+.btn {
+  margin: 5px 5px;
+  padding: 10px;
+  color: beige;
+  background-color: #5c7756;
+  border: #5c7756;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: left !important;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #3a3f44;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+  font-weight: bold;
+  transition: all 0.4s;
 }
 
 .items-container {

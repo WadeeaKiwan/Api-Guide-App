@@ -81,7 +81,6 @@ export default Vue.extend({
 .site-map-link:hover {
   color: black;
   text-decoration: underline;
-  transition: ease-in 0.2s;
 }
 
 .footer p {

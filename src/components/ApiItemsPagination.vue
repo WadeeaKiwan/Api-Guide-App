@@ -190,7 +190,6 @@ export default Vue.extend({
   cursor: pointer;
   background-color: silver;
   font-size: 1.5em;
-  transition: ease-in 0.3s;
 }
 
 .pagination-item button[disabled="disabled"] {
