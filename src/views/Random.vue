@@ -1,10 +1,15 @@
 <template>
   <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
-      <h2>This is a random API</h2>
+      <h2>A random API</h2>
+      <div>
+        <button type="button" class="btn" @click="randomClick">
+          Random API
+        </button>
+      </div>
       <ul>
         <ApiItemDetails
           class="random-item"
@@ -12,9 +17,6 @@
           :itemDetails="itemDetails"
         />
       </ul>
-      <div>
-        <button class="btn" @click="randomClick">Random API</button>
-      </div>
     </template>
   </div>
 </template>
@@ -67,33 +69,38 @@ h2 {
 }
 
 .random-item {
-  max-width: 60%;
-  margin: 5vh auto;
-  background-color: rgb(250, 240, 242, 0.5);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
-  padding: 5vh;
+  width: 80%;
+  margin: 3vw auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2vw;
+  background-color: beige;
+  color: #5c7756;
+  font-size: 1.2em;
 }
 
 .btn {
   margin: 20px 0;
   padding: 10px;
-  color: white;
-  background-color: #4a5157;
-  border: #575f66;
+  color: beige;
+  background-color: #5c7756;
+  border: #5c7756;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: left !important;
 }
 
 .btn:hover {
   cursor: pointer;
   background-color: #3a3f44;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+  font-weight: bold;
 }
 
-@media (max-width: 480px) {
-  .random {
-    padding-top: 220px;
-  }
-
-  ul {
-    margin: 0 5vw;
+@media (max-width: 576px) {
+  .random-item {
+    width: 100%;
   }
 }
 </style>

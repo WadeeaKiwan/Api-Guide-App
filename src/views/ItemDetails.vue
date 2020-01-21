@@ -1,10 +1,14 @@
 <template>
   <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
-      <button @click="$router.push('/')">Back to Homepage</button>
+      <div class="btn-container">
+        <button class="btn" type="button" @click="$router.push('/')">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
       <ul class="items-container">
         <ApiItemDetails
           class="selected-item"
@@ -91,14 +95,47 @@ export default Vue.extend({
 .selected-item {
   width: 80%;
   margin: 3vw auto;
-  background-color: rgba(206, 174, 180, 0.8);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2vw;
-  color: black;
+  background-color: beige;
+  color: #5c7756;
+  font-size: 1.2em;
 }
 
 .related-items {
   margin-top: 10vh;
+}
+
+.api-item:hover {
+  cursor: default;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+}
+
+.btn-container {
+  text-align: left;
+}
+
+.btn {
+  margin: 20px 0;
+  padding: 10px;
+  color: beige;
+  background-color: #5c7756;
+  border: #5c7756;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: left !important;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #3a3f44;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+  font-weight: bold;
+  transition: all 0.4s;
 }
 
 @media (max-width: 576px) {
@@ -107,7 +144,7 @@ export default Vue.extend({
   }
 
   .selected-item {
-    width: calc(100% - 50px);
+    width: 100%;
     margin: 3vh auto;
     padding: 15px;
   }

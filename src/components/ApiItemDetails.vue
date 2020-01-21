@@ -49,55 +49,29 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-h3 {
-  font-family: cursive, sans-serif;
-  font-style: italic;
-  font-weight: bold;
-  color: darkmagenta;
-  margin: 0 1vh 3vh;
-  font-size: 1.5em;
-  word-wrap: break-word;
-  max-width: 90%;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: block;
-  margin: 15px 15px;
-  padding: 1em 0;
-}
-
-b {
-  color: brown;
-}
-
-a {
-  color: #42b983;
-}
-
 p {
-  padding: 1vh;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 p:last-child {
-  margin-top: 2vw;
+  margin-top: 10px;
 }
 
 .btn {
   margin: 20px 0;
-  padding: 10px;
-  color: white;
-  background-color: #575f66;
-  border: #575f66;
+  padding: 5px;
+  color: beige;
+  background-color: #5c7756;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .btn:hover {
   cursor: pointer;
-  background-color: #3a3f44;
+  background-color: #6bb868;
+  color: #1f241e;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
-      <h2 class="home-title">Sample API's</h2>
+      <h2 class="home-title">API's</h2>
       <ApiItemsPagination
         :entries="allEntries"
         :totalPages="Math.ceil(allEntries.length / 10)"
@@ -76,15 +76,19 @@ export default Vue.extend({
 
 .api-item {
   width: 100%;
-  background-color: rgb(250, 240, 242, 0.5);
+  background-color: beige;
+  color: #5c7756;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
   padding: 2vw;
+  margin-top: 30px;
 }
 
 .api-item:hover {
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgb(250, 240, 242, 1);
+  color: rgb(245, 245, 220);
+  background-color: #5c7756;
+  transition: ease-in 0.3s;
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {

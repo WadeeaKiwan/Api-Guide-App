@@ -24,23 +24,6 @@ export default Vue.extend({
 
 <style scoped>
 h3 {
-  font-family: cursive, sans-serif;
-  font-style: italic;
-  font-weight: bold;
-  color: darkmagenta;
-  margin: 0 1vh 3vh;
-  font-size: 1.5em;
-  word-wrap: break-word;
-  max-width: 90%;
-}
-
-li {
-  display: block;
-  margin: 15px 15px;
-  padding: 1em 0;
-}
-
-b {
-  color: brown;
+  padding-bottom: 10px;
 }
 </style>

@@ -7,6 +7,11 @@ export interface Entry {
   Category?: string;
 }
 
+export interface AppData {
+  mobileView: boolean;
+  showNav: boolean;
+}
+
 export interface HomeData {
   loading: boolean;
   itemDetails: boolean;
