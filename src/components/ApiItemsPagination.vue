@@ -164,18 +164,22 @@ export default Vue.extend({
 });
 </script>
 
-<style>
+<style scoped>
 .pagination {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin-top: 2rem;
+  margin-top: 3rem;
   border-radius: 1rem;
-  padding: 1rem;
+  width: 95%;
+}
+
+.pagination-item {
+  align-self: center;
 }
 
 .pagination-item button {
-  padding: 0.25rem 0.4rem;
+  padding: 0.2rem 0.3rem;
   font-size: 1.1em;
   border: none;
   border-radius: 0.25rem;
@@ -185,6 +189,8 @@ export default Vue.extend({
 .pagination-item button:hover {
   cursor: pointer;
   background-color: silver;
+  font-size: 1.5em;
+  transition: ease-in 0.3s;
 }
 
 .pagination-item button[disabled="disabled"] {
@@ -195,10 +201,38 @@ export default Vue.extend({
 .pagination-item button[disabled="disabled"]:hover {
   cursor: default;
   background-color: transparent;
+  font-size: 1.1em;
+  transition: none;
 }
 
 .pagination-item button.active {
-  color: red;
+  color: #7ca971;
   font-weight: bold;
+  font-size: 1.5em;
+  text-shadow: 1px 1px black;
+}
+
+@media (min-width: 390px) and (max-width: 575.98px) {
+  .pagination {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .pagination {
+    max-width: 65%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .pagination {
+    max-width: 45%;
+  }
+}
+
+@media (min-width: 992px) {
+  .pagination {
+    max-width: 35%;
+  }
 }
 </style>

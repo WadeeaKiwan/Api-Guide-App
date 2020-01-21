@@ -1,18 +1,20 @@
 <template>
   <footer class="footer">
-    <h4>API GUIDE</h4>
-    <ul class="site-map">
-      <li
-        class="site-map-item"
-        v-for="(siteMapItem, index) in siteMapList"
-        :key="index"
-      >
-        <a class="site-map-link" :href="siteMapItem.path">{{
-          siteMapItem.name
-        }}</a>
-      </li>
-    </ul>
-    <p>Copyright &copy; Wadeea Kiwan 2020</p>
+    <div class="footer-container">
+      <h4>API GUIDE</h4>
+      <ul class="site-map">
+        <li
+          class="site-map-item"
+          v-for="(siteMapItem, index) in siteMapList"
+          :key="index"
+        >
+          <a class="site-map-link" :href="siteMapItem.path">{{
+            siteMapItem.name
+          }}</a>
+        </li>
+      </ul>
+      <p>Copyright &copy; Wadeea Kiwan 2020</p>
+    </div>
   </footer>
 </template>
 
@@ -37,16 +39,25 @@ export default Vue.extend({
 
 <style>
 .footer {
-  background-color: #2c3e50;
+  position: relative;
   color: beige;
+  background-color: #5c7756;
   padding: 0 15px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma;
+  height: 175px;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
 }
 
 .footer h4 {
-  font-family: "Bradley Hand ITC", sans-serif;
-  font-style: italic;
+  font-family: "Gloria Hallelujah", cursive;
   font-size: 1.5em;
-  text-shadow: 2px 2px 5px beige;
   padding: 30px 15px 0;
 }
 
@@ -58,7 +69,7 @@ export default Vue.extend({
 
 .site-map-item {
   padding: 0 2vh;
-  letter-spacing: 0.5vw;
+  letter-spacing: 0.4vw;
   text-transform: uppercase;
 }
 
@@ -68,8 +79,9 @@ export default Vue.extend({
 }
 
 .site-map-link:hover {
-  color: rgb(177, 177, 162);
+  color: black;
   text-decoration: underline;
+  transition: ease-in 0.2s;
 }
 
 .footer p {
@@ -77,7 +89,11 @@ export default Vue.extend({
   border-top: solid 1px beige;
 }
 
-@media (max-width: 479.98px) {
+@media (max-width: 576px) {
+  .footer {
+    height: 275px;
+  }
+
   .site-map {
     flex-direction: column;
   }

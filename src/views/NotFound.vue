@@ -17,12 +17,7 @@ export default Vue.extend({
 
 <style scoped>
 .not-found {
-  padding-top: 300px;
-}
-
-h1 {
-  text-align: center;
-  font-weight: bold;
+  padding-top: 40vh;
 }
 
 span {

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
       <form>
@@ -77,15 +77,34 @@ export default Vue.extend({
 
 <style scoped>
 select {
-  background-color: #575f66;
-  color: white;
+  color: beige;
+  background-color: #5c7756;
   cursor: pointer;
   padding: 1vw;
   margin: 1vw;
   font-size: 1em;
 }
 
+.api-item:hover {
+  cursor: default;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+}
+
 ul {
   list-style-type: none;
+}
+
+@media (max-width: 576px) {
+  select {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .api-item {
+    width: calc(100% / 3 - 30px);
+  }
 }
 </style>

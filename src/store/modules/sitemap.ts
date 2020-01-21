@@ -25,6 +25,7 @@ export default {
         const siteMapList = getRoutesList(
           (router as any).options.routes,
           "https://dtt-test.herokuapp.com"
+          // "http://localhost:8080"
         );
 
         // Assign the data to the `random` variable
