@@ -64,7 +64,7 @@ export default Vue.extend({
 .site-map {
   display: flex;
   justify-content: center;
-  padding: 3vh;
+  padding: 3vh 20vw;
 }
 
 .site-map-item {
