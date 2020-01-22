@@ -4,6 +4,7 @@
       <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
+      <h2 class="home-title">API's</h2>
       <div class="btn-container">
         <span>Sort by: </span>
         <button class="btn" type="button" @click="orderDefault">
@@ -16,7 +17,6 @@
           Z to A
         </button>
       </div>
-      <h2 class="home-title">API's</h2>
       <ApiItemsPagination
         :entries="allEntries"
         :totalPages="Math.ceil(allEntries.length / 10)"
@@ -115,7 +115,7 @@ export default Vue.extend({
   background-color: beige;
   color: #5c7756;
   font-weight: bold;
-  transition: all 0.4s;
+  transition: ease-in-out 0.4s;
 }
 
 .items-container {

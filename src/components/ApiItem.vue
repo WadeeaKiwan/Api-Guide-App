@@ -24,6 +24,8 @@ export default Vue.extend({
 
 <style scoped>
 h3 {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  word-wrap: break-word;
+  font-size: 1.5em;
 }
 </style>

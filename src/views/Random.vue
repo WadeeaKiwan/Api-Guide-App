@@ -6,7 +6,7 @@
     <template v-else>
       <h2>A random API</h2>
       <div>
-        <button type="button" class="btn" @click="randomClick">
+        <button type="button" class="btn-random" @click="randomClick">
           Random API
         </button>
       </div>
@@ -62,7 +62,7 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style>
 h2 {
   padding-bottom: 2vw;
   font-size: 1.6em;
@@ -78,7 +78,7 @@ h2 {
   font-size: 1.2em;
 }
 
-.btn {
+.btn-random {
   margin: 20px 0;
   padding: 10px;
   color: beige;
@@ -89,7 +89,7 @@ h2 {
   text-align: left !important;
 }
 
-.btn:hover {
+.btn-random:hover {
   cursor: pointer;
   background-color: #3a3f44;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

@@ -113,30 +113,6 @@ export default Vue.extend({
   color: #5c7756;
 }
 
-.btn-container {
-  text-align: left;
-}
-
-.btn {
-  margin: 20px 0;
-  padding: 10px;
-  color: beige;
-  background-color: #5c7756;
-  border: #5c7756;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: left !important;
-}
-
-.btn:hover {
-  cursor: pointer;
-  background-color: #3a3f44;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: beige;
-  color: #5c7756;
-  font-weight: bold;
-}
-
 @media (max-width: 576px) {
   .api-item {
     width: calc(100% - 30px);

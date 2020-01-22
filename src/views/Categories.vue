@@ -5,8 +5,14 @@
     </template>
     <template v-else>
       <form>
-        <select @change="onChange(selectedValue)" v-model="selectedValue">
-          <option selected disabled>Select a Category</option>
+        <label for="categories-select">Choose a Category:</label>
+        <select
+          name="categories"
+          id="categories-select"
+          @change="onChange(selectedValue)"
+          v-model="selectedValue"
+        >
+          <option selected disabled>Please, select an option</option>
           <option
             v-for="(value, index) in allCategories"
             :value="value"
@@ -49,7 +55,7 @@ export default Vue.extend({
       loading: true,
       itemDetails: true,
       selectedCategory: [],
-      selectedValue: "Select a Category"
+      selectedValue: "Please, select an option"
     };
   },
   methods: {

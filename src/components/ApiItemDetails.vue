@@ -23,7 +23,9 @@
         {{ entry.Cors }}
       </p>
       <p>
-        <a class="btn" :href="entry.Link" target="_blank">Go to this API</a>
+        <a class="btn-item" :href="entry.Link" target="_blank"
+          >Go to this API</a
+        >
       </p>
     </template>
     <template v-else>
@@ -49,16 +51,22 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+h3 {
+  font-size: 1.5em;
+  word-wrap: break-word;
+  padding-bottom: 15px;
+}
+
 p {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 p:last-child {
   margin-top: 10px;
 }
 
-.btn {
+.btn-item {
   margin: 20px 0;
   padding: 5px;
   color: beige;
@@ -67,7 +75,7 @@ p:last-child {
   border-radius: 5px;
 }
 
-.btn:hover {
+.btn-item:hover {
   cursor: pointer;
   background-color: #6bb868;
   color: #1f241e;
