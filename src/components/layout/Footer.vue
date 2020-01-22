@@ -37,8 +37,6 @@ export default Vue.extend({
 
 <style>
 .footer {
-  width: 100%;
-  min-height: 175px;
   color: beige;
   background-color: #5c7756;
 }

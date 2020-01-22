@@ -99,7 +99,7 @@ body {
 .container {
   padding: 10vh 5vw;
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .open {

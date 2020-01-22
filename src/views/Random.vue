@@ -62,7 +62,7 @@ export default Vue.extend({
 });
 </script>
 
-<style>
+<style scoped>
 h2 {
   padding-bottom: 2vw;
   font-size: 1.6em;
