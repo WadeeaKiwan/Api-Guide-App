@@ -1,20 +1,18 @@
 <template>
   <footer class="footer">
-    <div class="footer-container">
-      <h4>API GUIDE</h4>
-      <ul class="site-map">
-        <li
-          class="site-map-item"
-          v-for="(siteMapItem, index) in siteMapList"
-          :key="index"
-        >
-          <a class="site-map-link" :href="siteMapItem.path">{{
-            siteMapItem.name
-          }}</a>
-        </li>
-      </ul>
-      <p>Copyright &copy; Wadeea Kiwan 2020</p>
-    </div>
+    <h4>API GUIDE</h4>
+    <ul class="site-map">
+      <li
+        class="site-map-item"
+        v-for="(siteMapItem, index) in siteMapList"
+        :key="index"
+      >
+        <a class="site-map-link" :href="siteMapItem.path">{{
+          siteMapItem.name
+        }}</a>
+      </li>
+    </ul>
+    <p>Copyright &copy; Wadeea Kiwan 2020</p>
   </footer>
 </template>
 
@@ -39,20 +37,10 @@ export default Vue.extend({
 
 <style>
 .footer {
-  position: relative;
+  width: 100%;
+  min-height: 175px;
   color: beige;
   background-color: #5c7756;
-  padding: 0 15px;
-  text-align: center;
-  font-family: "Segoe UI", Tahoma;
-  height: 175px;
-}
-
-.footer-container {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
 }
 
 .footer h4 {
@@ -89,10 +77,6 @@ export default Vue.extend({
 }
 
 @media (max-width: 576px) {
-  .footer {
-    height: 275px;
-  }
-
   .site-map {
     flex-direction: column;
   }

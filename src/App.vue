@@ -38,20 +38,25 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Set the mobile breatpoint at 576px
     handleView() {
       this.mobileView = window.innerWidth <= 576;
     },
+    // Toggle the mobile navigation
     toggleNav() {
       this.showNav = !this.showNav;
     }
   },
   watch: {
+    // To close the MobileNavigation when choosing another route
     $route() {
       this.showNav = false;
     }
   },
   created() {
+    // Run the check at every start of the app
     this.handleView();
+    // Listen to the event handle view to change the main navbar view to mobile and vice versa
     window.addEventListener("resize", this.handleView);
   }
 });
@@ -94,8 +99,7 @@ body {
 .container {
   padding: 10vh 5vw;
   width: 100%;
-  min-height: 85vh;
-  position: relative;
+  min-height: 90vh;
 }
 
 .open {
