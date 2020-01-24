@@ -1,20 +1,22 @@
 <template>
-  <div class="random">
+  <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
-      <h2>This is a random API</h2>
+      <h2>A random API</h2>
+      <div>
+        <button type="button" class="btn-random" @click="randomClick">
+          Random API
+        </button>
+      </div>
       <ul>
         <ApiItemDetails
           class="random-item"
-          :entry="randomItem"
+          :entry="randomApi"
           :itemDetails="itemDetails"
         />
       </ul>
-      <div>
-        <button class="btn" @click="randomClick">Random API</button>
-      </div>
     </template>
   </div>
 </template>
@@ -24,6 +26,8 @@ import Vue from "vue";
 // @ is an alias to /src
 import ApiItemDetails from "@/components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+
+import { mapGetters, mapActions } from "vuex";
 
 import { RandomData } from "../types";
 
@@ -36,77 +40,67 @@ export default Vue.extend({
   data(): RandomData {
     return {
       loading: true,
-      randomItem: {},
       itemDetails: true
     };
   },
   methods: {
-    // Create a function to fetch `a random entry` and assign it to `randomItem` variable
-    async fetchRandomItem() {
-      try {
-        const res = await fetch("https://api.publicapis.org/random");
-
-        const json = await res.json();
-
-        this.randomItem = await json.entries[0];
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
+    // Map state to the component
+    ...mapActions(["getRandomItem"]),
     // Call the fetch function on click event
     randomClick(): void {
-      this.fetchRandomItem();
+      this.getRandomItem();
     }
   },
-  created() {
-    // Call the fetch function for a random entry
-    this.fetchRandomItem();
+  computed: {
+    ...mapGetters(["randomApi"])
+  },
+  async created() {
+    // Call the `getRandomItem` action for a random entry
+    await this.getRandomItem();
+    this.loading = false;
   }
 });
 </script>
 
 <style scoped>
-.random {
-  padding-top: 200px;
-  padding-bottom: 50px;
-  min-height: 1200px;
-}
-
 h2 {
   padding-bottom: 2vw;
   font-size: 1.6em;
 }
 
 .random-item {
-  max-width: 60%;
-  margin: 5vh auto;
-  background-color: rgb(250, 240, 242, 0.5);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
-  padding: 5vh;
+  width: 80%;
+  margin: 3vw auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2vw;
+  background-color: beige;
+  color: #5c7756;
+  font-size: 1.2em;
 }
 
-.btn {
+.btn-random {
   margin: 20px 0;
   padding: 10px;
-  color: white;
-  background-color: #4a5157;
-  border: #575f66;
+  color: beige;
+  background-color: #5c7756;
+  border: #5c7756;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: left !important;
 }
 
-.btn:hover {
+.btn-random:hover {
   cursor: pointer;
   background-color: #3a3f44;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+  font-weight: bold;
 }
 
-@media (max-width: 480px) {
-  .random {
-    padding-top: 220px;
-  }
-
-  ul {
-    margin: 0 5vw;
+@media (max-width: 576px) {
+  .random-item {
+    width: 100%;
   }
 }
 </style>

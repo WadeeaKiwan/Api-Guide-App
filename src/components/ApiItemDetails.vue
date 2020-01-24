@@ -23,7 +23,9 @@
         {{ entry.Cors }}
       </p>
       <p>
-        <a class="btn" :href="entry.Link" target="_blank">Go to this API</a>
+        <a class="btn-item" :href="entry.Link" target="_blank"
+          >Go to this API</a
+        >
       </p>
     </template>
     <template v-else>
@@ -50,53 +52,33 @@ export default Vue.extend({
 
 <style scoped>
 h3 {
-  font-family: cursive, sans-serif;
-  font-style: italic;
-  font-weight: bold;
-  color: darkmagenta;
-  margin-bottom: 5vh;
   font-size: 1.5em;
   word-wrap: break-word;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: block;
-  margin: 15px 15px;
-  padding: 1em 0;
-}
-
-b {
-  color: brown;
-}
-
-a {
-  color: #42b983;
+  padding-bottom: 15px;
 }
 
 p {
-  padding: 1vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 p:last-child {
-  margin-top: 2vw;
+  margin-top: 10px;
 }
 
-.btn {
+.btn-item {
   margin: 20px 0;
-  padding: 10px;
-  color: white;
-  background-color: #575f66;
-  border: #575f66;
+  padding: 5px;
+  color: beige;
+  background-color: #5c7756;
   text-decoration: none;
+  border-radius: 5px;
 }
 
-.btn:hover {
+.btn-item:hover {
   cursor: pointer;
-  background-color: #3a3f44;
+  background-color: #6bb868;
+  color: #1f241e;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>

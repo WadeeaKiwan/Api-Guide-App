@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <h4>API GUIDE</h4>
     <ul class="site-map">
       <li
         class="site-map-item"
@@ -18,81 +19,68 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { FooterData } from "../../types";
+import { mapGetters, mapActions } from "vuex";
 
 export default Vue.extend({
   name: "Footer",
-  data(): FooterData {
-    return {
-      siteMapList: []
-    };
-  },
   methods: {
-    // Custom function to List an arry of routes names and paths
-    getRoutesList(
-      routes: { path: string; name: string }[],
-      pre: string
-    ): { path: string; name: string }[] {
-      return routes.reduce(
-        (
-          array: { path: string; name: string }[],
-          route: { name: string; path: string; children?: any }
-        ) => {
-          const path = `${pre}${route.path}`;
-
-          if (route.path !== "*" && route.name !== "ItemDetails") {
-            array.push({ name: route.name, path });
-          }
-
-          if (route.children) {
-            array.push(...this.getRoutesList(route.children, `${path}/`));
-          }
-
-          return array;
-        },
-        []
-      );
-    }
+    ...mapActions(["fetchSitemapList"])
   },
-  created() {
-    // Call the custion function `getRoutesList` and assign its retured array to the `siteMapList` variable
-    this.siteMapList = this.getRoutesList(
-      (this as any).$router.options.routes,
-      "https://dtt-test.herokuapp.com"
-    );
+  computed: {
+    ...mapGetters(["siteMapList"])
+  },
+  async created() {
+    await this.fetchSitemapList();
   }
 });
 </script>
 
 <style>
 .footer {
-  background-color: #575f66;
-  color: white;
-  padding: 10px;
-  font-size: 1.2em;
+  color: beige;
+  background-color: #5c7756;
+}
+
+.footer h4 {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5em;
+  padding: 30px 15px 0;
 }
 
 .site-map {
   display: flex;
   justify-content: center;
-  padding: 5vh;
+  padding: 3vh 20vw;
 }
 
 .site-map-item {
-  padding: 1vh;
+  padding: 0 2vh;
+  letter-spacing: 0.4vw;
+  text-transform: uppercase;
 }
 
 .site-map-link {
   color: beige;
+  text-decoration: none;
 }
 
 .site-map-link:hover {
-  color: rgb(202, 202, 187);
+  color: black;
+  text-decoration: underline;
 }
 
-@media (max-width: 479.98px) {
+.footer p {
+  padding: 5px 0;
+  border-top: solid 1px beige;
+}
+
+@media (max-width: 576px) {
   .site-map {
     flex-direction: column;
+  }
+
+  .site-map-item {
+    padding: 1vh 0;
   }
 }
 </style>

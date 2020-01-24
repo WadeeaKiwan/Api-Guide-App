@@ -1,14 +1,20 @@
 <template>
-  <div class="categories">
+  <div class="container">
     <template v-if="loading">
-      <PulseLoader :color="`#575f66`" />
+      <PulseLoader class="spinner" :color="`#7ca971`" />
     </template>
     <template v-else>
       <form>
-        <select @change="onChange(selectedValue)" v-model="selectedValue">
-          <option selected disabled>Select a Category</option>
+        <label for="categories-select">Choose a Category:</label>
+        <select
+          name="categories"
+          id="categories-select"
+          @change="onChange(selectedValue)"
+          v-model="selectedValue"
+        >
+          <option selected disabled>Please, select an option</option>
           <option
-            v-for="(value, index) in categories"
+            v-for="(value, index) in allCategories"
             :value="value"
             :key="index"
             >{{ value }}</option
@@ -33,7 +39,10 @@ import Vue from "vue";
 import ApiItemDetails from "../components/ApiItemDetails.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
+import { mapGetters, mapActions } from "vuex";
+
 import { CategoriesData } from "../types";
+import { Entry } from "../types";
 
 export default Vue.extend({
   name: "Categories",
@@ -44,80 +53,68 @@ export default Vue.extend({
   data(): CategoriesData {
     return {
       loading: true,
-      categories: [],
-      entries: [],
+      itemDetails: true,
       selectedCategory: [],
-      selectedValue: "Select a Category",
-      itemDetails: true
+      selectedValue: "Please, select an option"
     };
   },
   methods: {
-    // Create function to fetch the `Categories` array and assign it to the `categories` variable
-    async fetchCategories() {
-      try {
-        const res = await fetch("https://api.publicapis.org/categories");
-
-        const categories = await res.json();
-
-        this.categories = categories;
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
-    // Create function to fetch `the whole data` array and assign it to the `entries` variable
-    async fetchEntries() {
-      try {
-        const res = await fetch("https://api.publicapis.org/entries");
-
-        const json = await res.json();
-
-        this.entries = await json.entries;
-
-        this.loading = false;
-      } catch (err) {
-        throw err;
-      }
-    },
+    // Map action to the component
+    ...mapActions(["getCategories", "getEntries"]),
     // A method to change the value of the select menu according to the selected option
     onChange(value: string) {
-      this.selectedCategory = this.entries.filter(
-        entry => (entry.Category as string) === value
+      this.selectedCategory = this.allEntries.filter(
+        (entry: Entry) => (entry.Category as string) === value
       );
     }
   },
+  computed: {
+    // Map state to the component
+    ...mapGetters(["allEntries", "allCategories"])
+  },
   async created() {
-    // Call the fetch functions
-    await this.fetchCategories();
-    await this.fetchEntries();
+    // Call the fetch action
+    await this.getCategories();
+    await this.getEntries();
+    this.loading = false;
   }
 });
 </script>
 
 <style scoped>
-.categories {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  min-height: 1200px;
-}
-
 select {
-  background-color: #575f66;
-  color: white;
+  color: beige;
+  background-color: #5c7756;
   cursor: pointer;
   padding: 1vw;
   margin: 1vw;
   font-size: 1em;
 }
 
+select option[disabled] {
+  color: rgb(31, 28, 28);
+}
+
+.api-item:hover {
+  cursor: default;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: beige;
+  color: #5c7756;
+}
+
 ul {
   list-style-type: none;
 }
 
-@media (max-width: 479.98px) {
-  .categories {
-    padding-top: 220px;
+@media (max-width: 576px) {
+  select {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .api-item {
+    width: calc(100% / 3 - 30px);
   }
 }
 </style>

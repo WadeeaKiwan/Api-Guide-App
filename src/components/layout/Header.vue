@@ -1,15 +1,24 @@
 <template>
   <header class="header">
-    <h1 class="header-title">API GUIDE</h1>
-    <ul class="navbar">
-      <router-link tag="li" to="/" class="navbar-item">Home</router-link>
-      <router-link tag="li" to="/categories" class="navbar-item"
-        >Categories</router-link
-      >
-      <router-link tag="li" to="/random" class="navbar-item"
-        >Random</router-link
-      >
-    </ul>
+    <div class="container-header">
+      <div class="header-title">
+        <router-link to="/" class="title">API GUIDE</router-link>
+      </div>
+      <div class="main-nav" v-if="!mobileView">
+        <ul class="navbar">
+          <router-link tag="li" to="/" class="navbar-item">Home</router-link>
+          <router-link tag="li" to="/categories" class="navbar-item"
+            >Categories</router-link
+          >
+          <router-link tag="li" to="/random" class="navbar-item"
+            >Random</router-link
+          >
+        </ul>
+      </div>
+      <div id="navigation-icon" v-if="mobileView" @click="toggleNav">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -17,71 +26,108 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "Header"
+  name: "Header",
+  props: {
+    mobileView: {
+      type: Boolean,
+      required: true
+    },
+    showNav: {
+      type: Boolean,
+      required: true
+    }
+  },
+  methods: {
+    toggleNav() {
+      this.$emit("nav-toggled", this.showNav);
+    }
+  }
 });
 </script>
 
 <style>
-.header {
+.container-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  line-height: 1.4;
   position: fixed;
   min-width: 100%;
   z-index: 1;
-}
-
-h1 {
-  min-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
+  font-family: "Segoe UI", Tahoma;
+  top: 0;
+  left: 0;
+  background-color: beige;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .header-title {
-  cursor: none;
-  font-size: 2em;
-  color: yellow;
-  font-family: cursive, sans-serif;
-  text-shadow: 2px 2px 5px white;
-  background-color: #575f66;
-  padding: 1.5vw;
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 15px;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.header-title a {
+  text-decoration: none;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #5c7756;
+}
+
+.header-title a:hover {
+  color: black;
 }
 
 .navbar {
   display: flex;
-  justify-content: center;
-  padding: 0;
-  background-color: rgb(8, 7, 7);
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.4vw;
 }
 
 .navbar-item {
-  padding: 10px;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: white;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  border: #575f66 solid 1px;
-  opacity: 0.7;
+  padding: 10px 10px;
 }
 
 .navbar-item:hover {
-  opacity: 1;
-  background-color: #575f66;
+  color: black;
+  background-color: #6bb868;
+  transition: ease-in 0.5s;
 }
 
 li.router-link-exact-active {
-  color: #42b983;
-  background-color: #575f66;
+  color: beige;
+  background-color: #5c7756;
 }
 
-@media (max-width: 479.98px) {
-  .navbar {
-    flex-direction: column;
-  }
+li.router-link-exact-active:hover {
+  color: beige;
+  background-color: #5c7756;
+}
 
-  .navbar-item {
-    width: 100%;
-  }
+#navigation-icon {
+  margin-right: 5vw;
+  cursor: pointer;
+}
+
+#navigation-icon i {
+  font-size: 1.6em;
+  color: #5c7756;
+  padding: 7px 10px;
+}
+
+#navigation-icon i:hover {
+  color: black;
 }
 </style>
