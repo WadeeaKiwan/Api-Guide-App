@@ -8,10 +8,7 @@ export default {
     siteMapList: []
   } as SitemapState,
   mutations: {
-    SET_SITEMAP_LIST(
-      state: SitemapState,
-      siteMapList: { name: string; path: string }[]
-    ) {
+    SET_SITEMAP_LIST(state: SitemapState, siteMapList: { name: string; path: string }[]) {
       state.siteMapList = siteMapList;
     }
   },
@@ -24,7 +21,7 @@ export default {
         // Call the custom function `getRoutesList` and assign its returned array to the `siteMapList` variable
         const siteMapList = getRoutesList(
           (router as any).options.routes,
-          "https://dtt-test.herokuapp.com"
+          "https://api-guide-app.herokuapp.com"
           // "http://localhost:8080"
         );
 

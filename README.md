@@ -1,8 +1,8 @@
-# API GUIDE
+# API GUIDE App
 
 ## Try the app online:
 
-https://dtt-test.herokuapp.com/
+https://api-guide-app.herokuapp.com/
 
 ## Project setup
 
