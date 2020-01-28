@@ -8,7 +8,10 @@ export default {
     siteMapList: []
   } as SitemapState,
   mutations: {
-    SET_SITEMAP_LIST(state: SitemapState, siteMapList: { name: string; path: string }[]) {
+    SET_SITEMAP_LIST(
+      state: SitemapState,
+      siteMapList: { name: string; path: string }[]
+    ) {
       state.siteMapList = siteMapList;
     }
   },
