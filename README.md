@@ -1,4 +1,4 @@
-# API GUIDE App
+# API GUIDE APP
 
 ## Try the app online:
 
