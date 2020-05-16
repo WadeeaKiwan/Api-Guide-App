@@ -1,5 +1,8 @@
 # API GUIDE APP
 
+![API GUIDE](./assets/API-GUIDE.jpg)
+![API GUIDE Mob](./assets/API-Guide-Mobile.jpg)
+
 ## Try the app online:
 
 https://api-guide-app.herokuapp.com/
