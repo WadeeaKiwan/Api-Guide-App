@@ -2,7 +2,11 @@
   <div id="app">
     <MobileNavigation />
     <div class="content" :class="{ open: showNav }">
-      <Header :mobileView="mobileView" :showNav="showNav" @nav-toggled="toggleNav" />
+      <Header
+        :mobileView="mobileView"
+        :showNav="showNav"
+        @nav-toggled="toggleNav"
+      />
       <main>
         <router-view />
       </main>
