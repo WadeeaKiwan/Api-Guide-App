@@ -34,7 +34,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "engines": {
-    "npm": "10.3.x",
-    "node": "18.18.x"
+    "npm": "6.14.12",
+    "node": "10.24.1"
   }
 }
