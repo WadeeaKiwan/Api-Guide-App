@@ -19,8 +19,6 @@ export default {
         const res = await fetch("https://api.publicapis.org/categories");
         const categories = (await res.json()).categories;
 
-        console.log({ categories });
-
         // Assign the data to the `categories` variable
         commit("SET_CATEGORIES", categories);
       } catch (err) {
